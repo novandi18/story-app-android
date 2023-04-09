@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Dicoding Story</string>
+    <string name="signin_title">Masuk Akun</string>
+    <string name="signup_title">Daftar Akun</string>
+    <string name="auth_title_desc">Silahkan masukkan field yang dibutuhkan.</string>
+    <string name="fullname">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signin_button">Masuk</string>
+    <string name="signup_button">Daftar</string>
+    <string name="back">Back</string>
+    <string name="story_title">Create Story</string>
+    <string name="image_preview">Image Preview</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="description">Deskripsi</string>
+    <string name="upload">Upload</string>
+    <string name="story">Story</string>
+    <string name="story_name_dummy">Novandi Ramadhan</string>
+    <string name="story_desc_dummy">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</string>
+</resources>
