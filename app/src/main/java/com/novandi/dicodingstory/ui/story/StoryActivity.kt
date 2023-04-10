@@ -11,5 +11,7 @@ class StoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.appBar.setNavigationOnClickListener { finish() }
     }
 }
