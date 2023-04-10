@@ -18,4 +18,9 @@
     <string name="story">Story</string>
     <string name="story_name_dummy">Novandi Ramadhan</string>
     <string name="story_desc_dummy">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</string>
+    <string name="error_name_empty">Nama harus diisi</string>
+    <string name="error_email_empty">Email harus diisi</string>
+    <string name="error_email_invalid">Email tidak valid</string>
+    <string name="error_password_empty">Password harus diisi</string>
+    <string name="error_password_length">Password harus lebih dari 8 karakter</string>
 </resources>
