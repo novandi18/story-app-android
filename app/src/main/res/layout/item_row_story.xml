@@ -30,6 +30,7 @@
             android:paddingHorizontal="16sp"
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
+            android:maxLines="1"
             android:textSize="16sp"
             android:textStyle="bold"/>
 
@@ -40,7 +41,8 @@
             tools:text="@string/story_desc_dummy"
             android:textColor="?attr/colorPrimary"
             android:paddingHorizontal="16sp"
-            android:paddingBottom="16dp"/>
+            android:paddingBottom="16dp"
+            android:maxLines="2"/>
         
     </LinearLayout>
 

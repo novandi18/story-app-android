@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ActionBar Title -->
+    <string name="signin_title">Masuk Akun</string>
+    <string name="signup_title">Daftar Akun</string>
+    <string name="detail_title">Detail Cerita</string>
+    <string name="story_title">Buat Story</string>
+    <string name="auth_title_desc">Silahkan masukkan field yang dibutuhkan.</string>
+
+    <!-- Input Hint -->
+    <string name="fullname">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="description">Deskripsi</string>
+
+    <!-- Button Text -->
+    <string name="signin_button">Masuk</string>
+    <string name="signup_button">Daftar</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="upload">Unggah</string>
+
+    <string name="back">Back</string>
+    <string name="image_preview">Preview foto</string>
+    <string name="story">Cerita</string>
+
+    <!-- Dummy -->
+    <string name="story_name_dummy">Novandi Ramadhan</string>
+    <string name="story_desc_dummy">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</string>
+
+    <!-- Error Message -->
+    <string name="error_name_empty">Nama harus diisi</string>
+    <string name="error_email_empty">Email harus diisi</string>
+    <string name="error_email_invalid">Email tidak valid</string>
+    <string name="error_password_empty">Password harus diisi</string>
+    <string name="error_password_length">Password harus lebih dari 8 karakter</string>
+    <string name="story_date">Diunggah pada 8 April 2023</string>
+    <string name="logout">Keluar</string>
+    <string name="logout_title">Keluar Akun</string>
+    <string name="logout_desc">Apakah kamu yakin ingin keluar akun?</string>
+    <string name="cancel">Batal</string>
+    <string name="logout_confirm">Ya, keluar</string>
+</resources>
