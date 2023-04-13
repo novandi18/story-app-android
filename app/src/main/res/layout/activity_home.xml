@@ -12,12 +12,14 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimaryVariant"
             app:title="Dicoding Story"
             app:titleTextColor="@color/white"
             app:titleCentered="true"
+            app:menu="@menu/home_menu"
             android:elevation="0dp"/>
 
     </com.google.android.material.appbar.AppBarLayout>
