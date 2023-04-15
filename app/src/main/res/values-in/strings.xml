@@ -4,7 +4,7 @@
     <string name="signin_title">Masuk Akun</string>
     <string name="signup_title">Daftar Akun</string>
     <string name="detail_title">Detail Cerita</string>
-    <string name="story_title">Buat Story</string>
+    <string name="story_title">Buat Cerita</string>
     <string name="auth_title_desc">Silahkan masukkan field yang dibutuhkan.</string>
 
     <!-- Input Hint -->
@@ -34,7 +34,7 @@
     <string name="error_email_invalid">Email tidak valid</string>
     <string name="error_password_empty">Password harus diisi</string>
     <string name="error_password_length">Password harus lebih dari 8 karakter</string>
-    <string name="story_date">Diunggah pada 8 April 2023</string>
+    <string name="story_date">Diunggah pada %1$s</string>
     <string name="logout">Keluar</string>
     <string name="logout_title">Keluar Akun</string>
     <string name="logout_desc">Apakah kamu yakin ingin keluar akun?</string>

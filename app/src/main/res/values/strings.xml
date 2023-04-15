@@ -38,7 +38,7 @@
     <string name="error_email_invalid">Invalid email</string>
     <string name="error_password_empty">Password is required</string>
     <string name="error_password_length">Password must be more than 8 characters</string>
-    <string name="story_date">Uploaded on April 8, 2023</string>
+    <string name="story_date">Uploaded on %1$s</string>
 
     <!-- Dialog Text -->
     <string name="logout_title">Logout Account</string>
