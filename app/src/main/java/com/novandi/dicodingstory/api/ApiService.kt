@@ -8,24 +8,25 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("/stories")
-    fun getStories() : Call<StoryResponse>
+    @GET("stories")
+    fun getStories(@Header("Authorization") header: String) : Call<StoryResponse>
 
     @Multipart
-    @POST("/stories")
+    @POST("stories")
     fun createStory(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody
     ) : Call<StoryResponse>
 
-    @GET("/stories/{id}")
-    fun getStory(@Path("id") id: String) : Call<StoryResponse>
+    @GET("stories/{id}")
+    fun getStory(@Path("id") id: String, @Header("Authorization") header: String) : Call<StoryResponse>
 
     @POST("register")
     fun register(
@@ -49,7 +50,7 @@ data class StoryResponse(
     val listStory: List<StoryItems>,
 
     @field:SerializedName("story")
-    val story: List<StoryDetail>,
+    val story: StoryItems,
 
     @field:SerializedName("loginResult")
     val loginResult: LoginResult
@@ -83,12 +84,6 @@ data class LoginResult(
     @field:SerializedName("token")
     val token: String
 )
-
-@Parcelize
-data class StoryDetail(
-    @field:SerializedName("id")
-    val id: String
-) : Parcelable
 
 data class LoginRequest(
     @field:SerializedName("email")
