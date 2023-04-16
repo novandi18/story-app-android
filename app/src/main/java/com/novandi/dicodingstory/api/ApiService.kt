@@ -15,25 +15,26 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("stories")
+    @GET("/v1/stories")
     fun getStories(@Header("Authorization") header: String) : Call<StoryResponse>
 
     @Multipart
-    @POST("stories")
+    @POST("/v1/stories")
     fun createStory(
         @Part file: MultipartBody.Part,
-        @Part("description") description: RequestBody
+        @Part("description") description: RequestBody,
+        @Header("Authorization") header: String
     ) : Call<StoryResponse>
 
-    @GET("stories/{id}")
+    @GET("/v1/stories/{id}")
     fun getStory(@Path("id") id: String, @Header("Authorization") header: String) : Call<StoryResponse>
 
-    @POST("register")
+    @POST("/v1/register")
     fun register(
         @Body registerRequest: RegisterRequest
     ) : Call<StoryResponse>
 
-    @POST("login")
+    @POST("/v1/login")
     fun login(
         @Body loginRequest: LoginRequest,
     ) : Call<StoryResponse>

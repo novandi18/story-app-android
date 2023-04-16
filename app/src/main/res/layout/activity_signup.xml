@@ -130,7 +130,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="invisible"
         tools:visibility="visible"
-        app:indicatorColor="?attr/colorPrimary"
-        android:indeterminate="true"/>
+        app:indicatorColor="@color/navy_500"
+        android:indeterminate="true"
+        android:background="@drawable/loading_shape"/>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
