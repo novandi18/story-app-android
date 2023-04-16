@@ -39,7 +39,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:indeterminate="true"
-            android:visibility="invisible"
+            android:visibility="visible"
             tools:visibility="visible"/>
 
         <androidx.core.widget.NestedScrollView

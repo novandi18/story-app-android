@@ -29,15 +29,24 @@
     <string name="story_desc_dummy">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</string>
 
     <!-- Error Message -->
-    <string name="error_name_empty">Nama harus diisi</string>
-    <string name="error_email_empty">Email harus diisi</string>
-    <string name="error_email_invalid">Email tidak valid</string>
-    <string name="error_password_empty">Password harus diisi</string>
-    <string name="error_password_length">Password harus lebih dari 8 karakter</string>
+    <string name="error_name_empty">Nama harus diisi.</string>
+    <string name="error_email_empty">Email harus diisi.</string>
+    <string name="error_email_invalid">Email tidak valid.</string>
+    <string name="error_password_empty">Password harus diisi.</string>
+    <string name="error_password_length">Password harus lebih dari 8 karakter.</string>
     <string name="story_date">Diunggah pada %1$s</string>
     <string name="logout">Keluar</string>
+    <string name="error_camera_open">Gagal memunculkan kamera</string>
+    <string name="error_camera_permission">Tidak mendapatkan permission</string>
     <string name="logout_title">Keluar Akun</string>
     <string name="logout_desc">Apakah kamu yakin ingin keluar akun?</string>
     <string name="cancel">Batal</string>
     <string name="logout_confirm">Ya, keluar</string>
+    <string name="switch_camera">Pindah kamera</string>
+    <string name="error_camera_capture">Gagal menangkap gambar</string>
+    <string name="success_camera_capture">Berhasil menangkap gambar</string>
+    <string name="gallery_title">Pilih Gambar</string>
+    <string name="error_description_empty">Deskripsi harus diisi.</string>
+    <string name="error_image_null">Silahkan pilih salah satu gambar</string>
+    <string name="success_story_create">Berhasil mengunggah cerita</string>
 </resources>

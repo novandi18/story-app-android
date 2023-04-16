@@ -7,6 +7,7 @@
     <string name="detail_title">Story Detail</string>
     <string name="story_title">Create Story</string>
     <string name="auth_title_desc">Please enter the required fields.</string>
+    <string name="gallery_title">Choose a Picture</string>
 
     <!-- Input Hint -->
     <string name="fullname">Full Name</string>
@@ -23,10 +24,12 @@
     <string name="cancel">Cancel</string>
     <string name="logout_confirm">Ya, logout</string>
 
+    <!-- Netral -->
     <string name="back">Back</string>
     <string name="image_preview">Image Preview</string>
     <string name="story">Story</string>
     <string name="logout">Logout</string>
+    <string name="story_date">Uploaded on %1$s</string>
 
     <!-- Dummy -->
     <string name="story_name_dummy">Novandi Ramadhan</string>
@@ -35,12 +38,21 @@
     <!-- Error Message -->
     <string name="error_name_empty">Name is required.</string>
     <string name="error_email_empty">Email is required.</string>
-    <string name="error_email_invalid">Invalid email</string>
-    <string name="error_password_empty">Password is required</string>
-    <string name="error_password_length">Password must be more than 8 characters</string>
-    <string name="story_date">Uploaded on %1$s</string>
+    <string name="error_email_invalid">Invalid email.</string>
+    <string name="error_password_empty">Password is required.</string>
+    <string name="error_password_length">Password must be more than 8 characters.</string>
+    <string name="error_camera_open">Failed to open the camera</string>
+    <string name="error_camera_permission">Not getting permission</string>
+    <string name="error_camera_capture">Failed to capture image</string>
+    <string name="error_description_empty">Description is required.</string>
+    <string name="error_image_null">Please choose an image</string>
 
     <!-- Dialog Text -->
     <string name="logout_title">Logout Account</string>
     <string name="logout_desc">Are you sure want to logout your account?</string>
+    <string name="switch_camera">Switch Camera</string>
+
+    <!-- Success Message -->
+    <string name="success_camera_capture">Image captured successfully</string>
+    <string name="success_story_create">Story uploaded successfully</string>
 </resources>
