@@ -1,10 +1,14 @@
 package com.novandi.dicodingstory.ui.home
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.LocaleList
+import android.provider.Settings
 import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -13,23 +17,37 @@ import com.novandi.dicodingstory.api.StoryItems
 import com.novandi.dicodingstory.databinding.ActivityHomeBinding
 import com.novandi.dicodingstory.storage.LoginModel
 import com.novandi.dicodingstory.storage.LoginPreference
+import com.novandi.dicodingstory.storage.SettingsModel
+import com.novandi.dicodingstory.storage.SettingsPreference
 import com.novandi.dicodingstory.ui.detail.DetailActivity
 import com.novandi.dicodingstory.ui.main.MainActivity
 import com.novandi.dicodingstory.ui.story.StoryActivity
+import java.util.Locale
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var loginModel: LoginModel
     private lateinit var mLoginPreference: LoginPreference
+    private lateinit var loginModel: LoginModel
+    private lateinit var mSettingsPreference: SettingsPreference
+    private lateinit var settingsModel: SettingsModel
     private val homeViewModel by viewModels<HomeViewModel>()
+    private val languages = arrayOf("Bahasa Indonesia", "English")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mSettingsPreference = SettingsPreference(this)
+        settingsModel = mSettingsPreference.getSettings()
+        if (Build.VERSION.SDK_INT >= 24) setLanguage(settingsModel.language.toString())
         binding = ActivityHomeBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         mLoginPreference = LoginPreference(this)
         loginModel = mLoginPreference.getUserLogin()
+
+        if (intent.getStringExtra(StoryActivity.EXTRA_MESSAGE) != null) {
+            Snackbar.make(window.decorView.rootView, intent.getStringExtra(StoryActivity.EXTRA_MESSAGE).toString(), Snackbar.LENGTH_SHORT).show()
+        }
 
         setupLayout()
         showResult()
@@ -88,9 +106,40 @@ class HomeActivity : AppCompatActivity() {
 
                     true
                 }
+                R.id.btn_language -> {
+                    if (Build.VERSION.SDK_INT <= 24) {
+                        startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+                    } else {
+                        MaterialAlertDialogBuilder(this@HomeActivity)
+                            .setTitle(getString(R.string.language_title))
+                            .setSingleChoiceItems(languages, -1) { dialog, selection ->
+                                when (selection) {
+                                    0 -> setLanguage("id")
+                                    1 -> setLanguage("en")
+                                }
+                                recreate()
+                                dialog.dismiss()
+                            }
+                            .show()
+                    }
+
+                    true
+                }
                 else -> false
             }
         }
+    }
+
+    @Suppress("DEPRECATION")
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun setLanguage(language: String) {
+        val localeSet = LocaleList(Locale(language))
+        LocaleList.setDefault(localeSet)
+        resources.configuration.setLocales(localeSet)
+        resources.updateConfiguration(resources.configuration, resources.displayMetrics)
+
+        settingsModel.language = language
+        mSettingsPreference.setSettings(settingsModel)
     }
 
     private fun showLoading(isLoading: Boolean) {

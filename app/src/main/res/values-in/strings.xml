@@ -49,4 +49,6 @@
     <string name="error_description_empty">Deskripsi harus diisi.</string>
     <string name="error_image_null">Silahkan pilih salah satu gambar</string>
     <string name="success_story_create">Berhasil mengunggah cerita</string>
+    <string name="language">Bahasa</string>
+    <string name="language_title">Ubah Bahasa</string>
 </resources>

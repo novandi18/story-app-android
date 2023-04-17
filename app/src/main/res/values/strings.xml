@@ -22,7 +22,8 @@
     <string name="gallery">Gallery</string>
     <string name="upload">Upload</string>
     <string name="cancel">Cancel</string>
-    <string name="logout_confirm">Ya, logout</string>
+    <string name="logout_confirm">Yes, logout</string>
+    <string name="ok" translatable="false">OK</string>
 
     <!-- Netral -->
     <string name="back">Back</string>
@@ -51,8 +52,10 @@
     <string name="logout_title">Logout Account</string>
     <string name="logout_desc">Are you sure want to logout your account?</string>
     <string name="switch_camera">Switch Camera</string>
+    <string name="language_title">Change Language</string>
 
     <!-- Success Message -->
     <string name="success_camera_capture">Image captured successfully</string>
     <string name="success_story_create">Story uploaded successfully</string>
+    <string name="language">Language</string>
 </resources>
