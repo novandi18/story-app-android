@@ -18,7 +18,6 @@
             android:background="?attr/colorPrimaryVariant"
             app:title="Dicoding Story"
             app:titleTextColor="@color/white"
-            app:titleCentered="true"
             app:menu="@menu/home_menu"
             android:elevation="0dp"/>
 

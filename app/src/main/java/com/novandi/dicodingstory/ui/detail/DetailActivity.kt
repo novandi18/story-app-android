@@ -40,10 +40,10 @@ class DetailActivity : AppCompatActivity() {
 
         detailViewModel.getStory(storyId.toString(), loginModel.token.toString())
         detailViewModel.story.observe(this@DetailActivity) { story ->
-            Glide.with(this@DetailActivity).load(story.photoUrl).into(binding.detailImage)
-            binding.detailDate.text = getString(R.string.story_date, story.createdAt.withDateFormat())
-            binding.detailName.text = story.name
-            binding.detailDescription.text = story.description
+            Glide.with(this@DetailActivity).load(story.photoUrl).into(binding.ivDetailPhoto)
+            binding.tvDetailDate.text = getString(R.string.story_date, story.createdAt.withDateFormat())
+            binding.tvDetailName.text = story.name
+            binding.tvDetailDescription.text = story.description
         }
 
         detailViewModel.isLoading.observe(this@DetailActivity) { showLoading(it) }
