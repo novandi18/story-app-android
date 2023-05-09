@@ -13,10 +13,15 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("/v1/stories")
-    fun getStories(@Header("Authorization") header: String) : Call<StoryResponse>
+    fun getStories(
+        @Header("Authorization") header: String,
+        @Query("page") page: Int? = null,
+        @Query("size") size: Int? = null
+    ) : Call<StoryResponse>
 
     @Multipart
     @POST("/v1/stories")

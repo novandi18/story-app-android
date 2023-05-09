@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.Patterns
 import com.novandi.dicodingstory.R
 
+private val languages = arrayOf("Bahasa Indonesia", "English")
+private val languagesCode = arrayOf("id", "en")
+
 fun CharSequence?.validateName(context: Context): String {
     val errorMessage = if (this.isNullOrEmpty()) {
         context.resources.getString(R.string.error_name_empty)
@@ -37,3 +40,5 @@ fun CharSequence?.validatePassword(context: Context): String {
 
     return errorMessage
 }
+
+fun getLanguages(): Array<Array<String>> = arrayOf(languages, languagesCode)

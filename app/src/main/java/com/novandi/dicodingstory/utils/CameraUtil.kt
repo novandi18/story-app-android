@@ -4,8 +4,10 @@ import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
+import androidx.exifinterface.media.ExifInterface
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -54,4 +56,22 @@ fun reduceFileImage(file: File): File {
     } while (streamLength > 1000000)
     bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
+}
+
+fun rotateFile(file: File, isBackCamera: Boolean = true) {
+    val exifInterface = ExifInterface(file.path)
+    when (exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
+        ExifInterface.ORIENTATION_ROTATE_90 -> {
+            val matrix = Matrix()
+            val bitmap = BitmapFactory.decodeFile(file.path)
+            val rotation = if (isBackCamera) 90f else -90f
+            matrix.postRotate(rotation)
+            if (!isBackCamera) {
+                matrix.postScale(-1f, 1f, bitmap.width / 2f, bitmap.height / 2f)
+            }
+            val result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+            result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
+        }
+    }
+
 }

@@ -22,6 +22,7 @@ import com.novandi.dicodingstory.storage.SettingsPreference
 import com.novandi.dicodingstory.ui.detail.DetailActivity
 import com.novandi.dicodingstory.ui.main.MainActivity
 import com.novandi.dicodingstory.ui.story.StoryActivity
+import com.novandi.dicodingstory.utils.getLanguages
 import java.util.Locale
 
 class HomeActivity : AppCompatActivity() {
@@ -30,8 +31,9 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var loginModel: LoginModel
     private lateinit var mSettingsPreference: SettingsPreference
     private lateinit var settingsModel: SettingsModel
-    private val homeViewModel by viewModels<HomeViewModel>()
-    private val languages = arrayOf("Bahasa Indonesia", "English")
+    private val homeViewModel: HomeViewModel by viewModels {
+        ViewModelFactory(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,10 +67,15 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showResult() {
         homeViewModel.getStories(loginModel.token.toString())
-        homeViewModel.stories.observe(this@HomeActivity) { stories ->
-            val homeAdapter = HomeAdapter(stories)
-            binding.rvStory.adapter = homeAdapter
+        val homeAdapter = HomeAdapter()
+        binding.rvStory.adapter = homeAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                homeAdapter.retry()
+            }
+        )
 
+        homeViewModel.stories.observe(this@HomeActivity) { stories ->
+            homeAdapter.submitData(lifecycle, stories)
             homeAdapter.setOnItemClickListener(object : HomeAdapter.OnItemClickListener {
                 override fun onItemClicked(data: StoryItems) {
                     val intent = Intent(this@HomeActivity, DetailActivity::class.java)
@@ -112,10 +119,10 @@ class HomeActivity : AppCompatActivity() {
                     } else {
                         MaterialAlertDialogBuilder(this@HomeActivity)
                             .setTitle(getString(R.string.language_title))
-                            .setSingleChoiceItems(languages, -1) { dialog, selection ->
+                            .setSingleChoiceItems(getLanguages()[0], getLanguages()[1].indexOf(settingsModel.language)) { dialog, selection ->
                                 when (selection) {
-                                    0 -> setLanguage("id")
-                                    1 -> setLanguage("en")
+                                    0 -> setLanguage(getLanguages()[1][0])
+                                    1 -> setLanguage(getLanguages()[1][1])
                                 }
                                 recreate()
                                 dialog.dismiss()
