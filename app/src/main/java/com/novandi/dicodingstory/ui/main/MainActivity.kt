@@ -4,23 +4,22 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
-import androidx.core.widget.doOnTextChanged
 import com.google.android.material.snackbar.Snackbar
 import com.novandi.dicodingstory.databinding.ActivityMainBinding
 import com.novandi.dicodingstory.storage.LoginModel
 import com.novandi.dicodingstory.storage.LoginPreference
 import com.novandi.dicodingstory.ui.home.HomeActivity
 import com.novandi.dicodingstory.ui.signup.SignupActivity
-import com.novandi.dicodingstory.utils.validateEmail
-import com.novandi.dicodingstory.utils.validatePassword
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mLoginPreference: LoginPreference
-    private lateinit var loginModel: LoginModel // INI NEVER INITIALIZE
+    private lateinit var loginModel: LoginModel
     private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,45 +38,45 @@ class MainActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
 
+        binding.edLoginEmail.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { inputValidation() }
+            override fun afterTextChanged(p0: Editable?) {}
+        })
+
+        binding.edLoginPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { inputValidation() }
+            override fun afterTextChanged(p0: Editable?) {}
+        })
+
         binding.btnSigninToSignup.setOnClickListener { startActivity(Intent(this, SignupActivity::class.java)) }
     }
 
     private fun inputValidation() {
-        binding.edLoginEmail.doOnTextChanged { text, _, _, _ ->
-            val validMessage = text.validateEmail(this)
-            binding.edLoginEmailLayout.error = if (validMessage != "") validMessage else null
-        }
-
-        binding.edLoginPassword.doOnTextChanged { text, _, _, _ ->
-            val validMessage = text.validatePassword(this)
-            binding.edLoginPasswordLayout.error = if (validMessage != "") validMessage else null
-        }
+        val emailField = binding.edLoginEmail
+        val passwordField = binding.edLoginPassword
+        binding.btnSignin.isEnabled = (emailField.error == null && emailField.text.toString().isNotEmpty())
+                && (passwordField.error == null && passwordField.text.toString().isNotEmpty())
     }
 
     private fun checkUser() {
-        val email = binding.edLoginEmail.text
-        val password = binding.edLoginPassword.text
+        val emailValue = binding.edLoginEmail.text.toString()
+        val passwordValue = binding.edLoginPassword.text.toString()
 
-        val validEmail = email.validateEmail(this)
-        val validPassword = password.validatePassword(this)
+        mainViewModel.isLoading.observe(this@MainActivity) { showLoading(it) }
 
-        if (validEmail == "" && validPassword == "") {
-            mainViewModel.isLoading.observe(this@MainActivity) { showLoading(it) }
+        mainViewModel.userLogin(emailValue, passwordValue)
+        mainViewModel.loginResult.observe(this) { result ->
+            postUserLogin(result.userId, result.name, result.token)
+            postUserLogin(result.userId, result.name, result.token)
+            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+        }
 
-            mainViewModel.userLogin(email.toString(), password.toString())
-            mainViewModel.loginResult.observe(this) { result ->
-                postUserLogin(result.userId, result.name, result.token)
-                startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+        mainViewModel.snackbarText.observe(this) {
+            it.getContentIfNotHandled()?.let { text ->
+                Snackbar.make(window.decorView.rootView, text, Snackbar.LENGTH_SHORT).show()
             }
-
-            mainViewModel.snackbarText.observe(this) {
-                it.getContentIfNotHandled()?.let { text ->
-                    Snackbar.make(window.decorView.rootView, text, Snackbar.LENGTH_SHORT).show()
-                }
-            }
-        } else {
-            binding.edLoginEmailLayout.error = if (validEmail != "") validEmail else null
-            binding.edLoginPasswordLayout.error = if (validPassword != "") validPassword else null
         }
     }
 
@@ -100,9 +99,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.btnSignin.isEnabled = !isLoading
-        binding.edLoginEmailLayout.isEnabled = !isLoading
-        binding.edLoginPasswordLayout.isEnabled = !isLoading
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+        with(binding) {
+            btnSignin.isEnabled = !isLoading
+            edLoginEmail.isEnabled = !isLoading
+            edLoginPassword.isEnabled = !isLoading
+            progressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
+        }
     }
 }

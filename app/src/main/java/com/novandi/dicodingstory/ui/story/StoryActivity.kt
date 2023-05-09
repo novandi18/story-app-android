@@ -25,6 +25,7 @@ import com.novandi.dicodingstory.storage.LoginPreference
 import com.novandi.dicodingstory.ui.home.HomeActivity
 import com.novandi.dicodingstory.utils.createCustomTempFile
 import com.novandi.dicodingstory.utils.reduceFileImage
+import com.novandi.dicodingstory.utils.rotateFile
 import com.novandi.dicodingstory.utils.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -45,6 +46,7 @@ class StoryActivity : AppCompatActivity() {
         if (it.resultCode == RESULT_OK) {
             val myFile = File(currentPhotoPath)
             myFile.let { file ->
+                rotateFile(file)
                 getFile = file
                 binding.storyImage.setImageBitmap(BitmapFactory.decodeFile(file.path))
             }

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.DicodingStory" parent="Theme.Material3.Light">
         <!-- Primary brand color. -->
@@ -17,5 +17,20 @@
     <style name="Card" parent="Widget.Material3.CardView.Filled">
         <item name="cardElevation">0dp</item>
         <item name="cardBackgroundColor">@color/navy_50</item>
+    </style>
+
+    <style name="Theme.DicodingStory.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <!-- Radius of the outer bound of widgets to make the rounded corners -->
+        <item name="appWidgetRadius">16dp</item>
+        <!--
+        Radius of the inner view's bound of widgets to make the rounded corners.
+        It needs to be 8dp or less than the value of appWidgetRadius
+        -->
+        <item name="appWidgetInnerRadius">8dp</item>
+    </style>
+
+    <style name="Theme.DicodingStory.AppWidgetContainer" parent="Theme.DicodingStory.AppWidgetContainerParent">
+        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
+        <item name="appWidgetPadding">16dp</item>
     </style>
 </resources>

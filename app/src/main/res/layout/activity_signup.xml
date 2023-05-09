@@ -60,54 +60,35 @@
             android:text="@string/auth_title_desc"
             android:textColor="@color/gray" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ed_register_name_layout"
+        <com.novandi.dicodingstory.components.NameEditText
+            android:id="@+id/ed_register_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_height="64dp"
+            android:textSize="18sp"
+            android:inputType="text"
+            android:layout_marginTop="16dp"
             android:hint="@string/fullname"
-            app:startIconDrawable="@drawable/ic_person">
+            tools:ignore="SpeakableTextPresentCheck" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_register_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ed_register_email_layout"
+        <com.novandi.dicodingstory.components.EmailEditText
+            android:id="@+id/ed_register_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
+            android:textSize="18sp"
+            android:inputType="textEmailAddress"
             android:layout_marginTop="16dp"
             android:hint="@string/email"
-            app:startIconDrawable="@drawable/ic_email">
+            tools:ignore="SpeakableTextPresentCheck" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_register_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ed_register_password_layout"
+        <com.novandi.dicodingstory.components.PasswordEditText
+            android:id="@+id/ed_register_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
+            android:textSize="18sp"
+            android:inputType="textPassword"
             android:layout_marginTop="16dp"
             android:hint="@string/password"
-            app:endIconMode="password_toggle"
-            app:startIconDrawable="@drawable/ic_key">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ed_register_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn_signup"

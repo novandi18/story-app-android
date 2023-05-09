@@ -24,6 +24,7 @@
     <string name="cancel">Cancel</string>
     <string name="logout_confirm">Yes, logout</string>
     <string name="ok" translatable="false">OK</string>
+    <string name="retry">Try again</string>
 
     <!-- Netral -->
     <string name="back">Back</string>

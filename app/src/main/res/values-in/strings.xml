@@ -20,7 +20,8 @@
     <string name="gallery">Galeri</string>
     <string name="upload">Unggah</string>
 
-    <string name="back">Back</string>
+    <string name="retry">Coba lagi</string>
+    <string name="back">Kembali</string>
     <string name="image_preview">Preview foto</string>
     <string name="story">Cerita</string>
 

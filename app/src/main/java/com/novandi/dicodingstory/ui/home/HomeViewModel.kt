@@ -1,20 +1,27 @@
 package com.novandi.dicodingstory.ui.home
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.google.gson.Gson
 import com.novandi.dicodingstory.api.ApiConfig
 import com.novandi.dicodingstory.api.StoryItems
 import com.novandi.dicodingstory.api.StoryResponse
+import com.novandi.dicodingstory.data.StoryRepository
+import com.novandi.dicodingstory.di.Injection
 import com.novandi.dicodingstory.helper.Event
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(storyRepository: StoryRepository) : ViewModel() {
     private val _stories = MutableLiveData<List<StoryItems>>()
-    val stories: LiveData<List<StoryItems>> = _stories
+    val stories: LiveData<PagingData<StoryItems>> = storyRepository.getStories().cachedIn(viewModelScope)
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -24,7 +31,7 @@ class HomeViewModel : ViewModel() {
 
     fun getStories(token: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getStories("Bearer $token")
+        val client = ApiConfig.getApiService().getStories("Bearer $token", size = STORY_SIZE)
         client.enqueue(object : Callback<StoryResponse> {
             override fun onResponse(call: Call<StoryResponse>, response: Response<StoryResponse>) {
                 _isLoading.value = false
@@ -43,5 +50,19 @@ class HomeViewModel : ViewModel() {
             }
 
         })
+    }
+
+    companion object {
+        const val STORY_SIZE = 5
+    }
+}
+
+class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return HomeViewModel(Injection.provideRepository(context)) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
