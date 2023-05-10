@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.LocaleList
 import android.provider.Settings
-import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,7 +65,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showResult() {
-        homeViewModel.getStories(loginModel.token.toString())
         val homeAdapter = HomeAdapter()
         binding.rvStory.adapter = homeAdapter.withLoadStateFooter(
             footer = LoadingStateAdapter {
@@ -84,14 +82,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             })
         }
-
-        homeViewModel.snackbarText.observe(this@HomeActivity) {
-            it.getContentIfNotHandled()?.let { text ->
-                if (text != "") Snackbar.make(window.decorView.rootView, text, Snackbar.LENGTH_SHORT).show()
-            }
-        }
-
-        homeViewModel.isLoading.observe(this@HomeActivity) { showLoading(it) }
     }
 
     private fun menuOptions() {
@@ -147,10 +137,6 @@ class HomeActivity : AppCompatActivity() {
 
         settingsModel.language = language
         mSettingsPreference.setSettings(settingsModel)
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.INVISIBLE
     }
 
     companion object {

@@ -1,6 +1,8 @@
 package com.novandi.dicodingstory.api
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import okhttp3.MultipartBody
@@ -63,7 +65,9 @@ data class StoryResponse(
 )
 
 @Parcelize
+@Entity(tableName = "story")
 data class StoryItems(
+    @PrimaryKey
     @field:SerializedName("id")
     val id: String,
 
