@@ -38,7 +38,7 @@
     <string name="story_date">Diunggah pada %1$s</string>
     <string name="logout">Keluar</string>
     <string name="error_camera_open">Gagal memunculkan kamera</string>
-    <string name="error_camera_permission">Tidak mendapatkan permission</string>
+    <string name="error_camera_permission">Tidak mendapatkan perizinan</string>
     <string name="logout_title">Keluar Akun</string>
     <string name="logout_desc">Apakah kamu yakin ingin keluar akun?</string>
     <string name="cancel">Batal</string>
@@ -55,4 +55,6 @@
     <string name="title_activity_maps">Peta Cerita</string>
     <string name="maps">Peta</string>
     <string name="location">Lokasi</string>
+    <string name="error_location_not_found">Lokasi tidak ditemukan. Coba lagi</string>
+    <string name="error_location_permission">Tidak mendapatkan perizinan lokasi</string>
 </resources>

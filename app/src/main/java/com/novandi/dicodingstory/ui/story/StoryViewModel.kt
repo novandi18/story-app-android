@@ -20,9 +20,12 @@ class StoryViewModel : ViewModel() {
     private val _snackbarText = MutableLiveData<Event<String>>()
     val snackbarText: LiveData<Event<String>> = _snackbarText
 
-    fun uploadStory(image: MultipartBody.Part, description: RequestBody, token: String) {
+    fun uploadStory(image: MultipartBody.Part, description: RequestBody, token: String, latitude: RequestBody?, longitude: RequestBody?) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().createStory(image, description, "Bearer $token")
+        val client = ApiConfig.getApiService().createStory(
+            file = image, description = description, header =  "Bearer $token",
+            lat = latitude, lon = longitude
+        )
         client.enqueue(object : Callback<StoryResponse> {
             override fun onResponse(call: Call<StoryResponse>, response: Response<StoryResponse>) {
                 _isLoading.value = false

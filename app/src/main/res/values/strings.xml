@@ -50,6 +50,8 @@
     <string name="error_camera_capture">Failed to capture image</string>
     <string name="error_description_empty">Description is required.</string>
     <string name="error_image_null">Please choose an image</string>
+    <string name="error_location_not_found">Location is not found. Try Again</string>
+    <string name="error_location_permission">Not getting location permission</string>
 
     <!-- Dialog Text -->
     <string name="logout_title">Logout Account</string>
