@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.novandi.dicodingstory.ui.map.MapsActivity
 import com.novandi.dicodingstory.R
 import com.novandi.dicodingstory.api.StoryItems
 import com.novandi.dicodingstory.databinding.ActivityHomeBinding
@@ -120,6 +121,10 @@ class HomeActivity : AppCompatActivity() {
                             .show()
                     }
 
+                    true
+                }
+                R.id.btn_maps -> {
+                    startActivity(Intent(this@HomeActivity, MapsActivity::class.java))
                     true
                 }
                 else -> false

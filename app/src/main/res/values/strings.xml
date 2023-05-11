@@ -8,12 +8,14 @@
     <string name="story_title">Create Story</string>
     <string name="auth_title_desc">Please enter the required fields.</string>
     <string name="gallery_title">Choose a Picture</string>
+    <string name="language">Language</string>
 
     <!-- Input Hint -->
     <string name="fullname">Full Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="description">Description</string>
+    <string name="location">Location</string>
 
     <!-- Button Text -->
     <string name="signin_button">Login</string>
@@ -58,5 +60,8 @@
     <!-- Success Message -->
     <string name="success_camera_capture">Image captured successfully</string>
     <string name="success_story_create">Story uploaded successfully</string>
-    <string name="language">Language</string>
+
+    <!-- Maps -->
+    <string name="title_activity_maps">Story Maps</string>
+    <string name="maps">Maps</string>
 </resources>

@@ -93,7 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="12dp"
                     android:hint="@string/description">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -107,6 +107,15 @@
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switch_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:checked="false"
+                    android:text="@string/location"/>
 
                 <Button
                     android:id="@+id/button_add"
