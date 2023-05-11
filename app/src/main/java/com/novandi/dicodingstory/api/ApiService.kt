@@ -31,7 +31,9 @@ interface ApiService {
     fun createStory(
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
-        @Header("Authorization") header: String
+        @Header("Authorization") header: String,
+        @Part("lat") lat: RequestBody?,
+        @Part("lon") lon: RequestBody?
     ) : Call<StoryResponse>
 
     @GET("/v1/stories/{id}")
