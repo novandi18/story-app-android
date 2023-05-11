@@ -22,7 +22,8 @@ interface ApiService {
     fun getStories(
         @Header("Authorization") header: String,
         @Query("page") page: Int? = null,
-        @Query("size") size: Int? = null
+        @Query("size") size: Int? = null,
+        @Query("location") location: Int? = 0
     ) : Call<StoryResponse>
 
     @Multipart
@@ -82,6 +83,12 @@ data class StoryItems(
 
     @field:SerializedName("createdAt")
     val createdAt: String,
+
+    @field:SerializedName("lat")
+    val lat: Double? = null,
+
+    @field:SerializedName("lon")
+    val lon: Double? = null
 ) : Parcelable
 
 data class LoginResult(

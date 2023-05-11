@@ -52,4 +52,7 @@
     <string name="success_story_create">Berhasil mengunggah cerita</string>
     <string name="language">Bahasa</string>
     <string name="language_title">Ubah Bahasa</string>
+    <string name="title_activity_maps">Peta Cerita</string>
+    <string name="maps">Peta</string>
+    <string name="location">Lokasi</string>
 </resources>

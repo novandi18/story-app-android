@@ -129,6 +129,7 @@ class StoryActivity : AppCompatActivity() {
 
     private fun uploadStory() {
         val description = binding.edAddDescription.text.toString()
+
         if (getFile != null && description.isNotEmpty()) {
             val file = reduceFileImage(getFile as File)
             val requestDescription = description.toRequestBody("text/plain".toMediaType())
