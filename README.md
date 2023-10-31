@@ -22,9 +22,9 @@ This application is also one of the requirements to pass the "Learning Intermedi
 
 | Title             | Screenshot                                                         |
 |-------------------|--------------------------------------------------------------------|
-| Login Screen      | ![Login Screen](https://i.ibb.co/spStWHg/login.png =x500)          |
-| Register Screen   | ![Register Screen](https://i.ibb.co/zRjqfFJ/register.png =x500)    |
-| Home Screen       | ![Home Screen](https://i.ibb.co/VNP2xJM/home.png =x500)            |
-| Story Screen      | ![Story Screen](https://i.ibb.co/37ydkZj/detail.png =x500)         |
-| New Story Screen  | ![Story Maps Screen](https://i.ibb.co/827DB07/add-story.png =x500) |
-| Story Maps Screen | ![Story Maps Screen](https://i.ibb.co/M7yDg4S/maps.png =x500)      |
+| Login Screen      | <img src="https://i.ibb.co/spStWHg/login.png" width="200px"/>        |
+| Register Screen   | <img src="https://i.ibb.co/zRjqfFJ/register.png" width="200px"/>   |
+| Home Screen       | <img src="https://i.ibb.co/VNP2xJM/home.png" width="200px"/>          |
+| Story Screen      | <img src="https://i.ibb.co/37ydkZj/detail.png" width="200px"/>         |
+| New Story Screen  | <img src="https://i.ibb.co/827DB07/add-story.png" width="200px"/>  |
+| Story Maps Screen | <img src="https://i.ibb.co/M7yDg4S/maps.png" width="200px"/>      |
